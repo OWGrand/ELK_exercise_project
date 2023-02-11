@@ -4,6 +4,7 @@ WORKDIR app/
 
 COPY requirements.txt .
 RUN python3 -m venv env
+SHELL ["/bin/bash", "-c"]
 RUN source env/bin/activate
 RUN pip install -r requirements.txt
 
