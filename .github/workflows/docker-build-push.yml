@@ -1,0 +1,20 @@
+name: Build and Start Docker Image
+on:
+  push:
+    branches:
+      - main
+      - test_build
+jobs:
+  build-and-start:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t webapp_image:latest .
+
+    - name: Start Docker container
+      run: docker run -p 8000:8000 webapp_image:latest
+
